@@ -12,9 +12,15 @@ export class EmployeeService {
 
   constructor(private http:HttpClient) { }
 
-  getEmpleados():Observable<Employee[]>{
+  getEmployee():Observable<Employee[]>{
     return this.http.get<Employee[]>(this.apiURL);
   }
 
-  
+  addEmploye(employee: Employee):Observable<Employee>{
+    return this.http.post<Employee>(this.apiURL,employee);
+  }
+  deleteEmployee(id: number):Observable<any>{
+    return this.http.delete<Employee>(`${this.apiURL}/${id}`);
+  }
+
 }
